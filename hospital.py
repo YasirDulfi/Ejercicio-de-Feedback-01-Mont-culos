@@ -43,14 +43,12 @@ class SalaEmergencias:
     def atender_paciente_por_urgencia(self, nivel_urgencia):
         paciente_urgencia = self.max_heap_urgencia.peek()
 
-        # Validate if the patient matches the specified urgency level
         if paciente_urgencia.nivel_urgencia == nivel_urgencia:
             self.max_heap_urgencia.removeMax()
             self.min_heap_tiempo.eliminarPaciente(paciente_urgencia)
             return paciente_urgencia
 
     def atender_paciente_por_tiempo(self):
-        # Pop patient from both heaps based on waiting time
         paciente_tiempo = self.min_heap_tiempo.peekByTime()
         self.min_heap_tiempo.eliminarPaciente(paciente_tiempo)
         self.max_heap_urgencia.eliminarPaciente(paciente_tiempo)
